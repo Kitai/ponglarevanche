@@ -2,18 +2,21 @@
 <body id="bod">
 
 <script type='text/javascript'>
-    let fini = false;
-    function start(){
+    let fini = true;
+    function fin(){
+        if (fini)
+            return;
+        document.getElementById("barregauche").style.display = "none";
+        document.getElementById("barredroite").style.display = "none";
+        document.getElementById("fin").style.display = "block";
+        fini = true;
+    }
+    function debut(){
         document.getElementById("Histoire").style.display = "none";
         document.getElementById("Jeu").style.display = "block";
-        document.getElementById("bod").onkeydown = function(e){
-            if (fini)
-                return;
-            document.getElementById("barregauche").style.display = "none";
-            document.getElementById("barredroite").style.display = "none";
-            document.getElementById("fin").style.display = "block";
-            fini = true;
-        }
+        document.getElementById("bod").onkeydown = ()=>fin();
+        document.getElementById("bod").onclick = ()=>fin();
+        setTimeout(()=>fini=false, 10);
     }
 </script>
 
@@ -21,8 +24,8 @@
     <p>Elle a subi la torure, un cycle infernal dans lequel, coup après coup, la seule échappatoire était une chute inexorable.</p>
     <p>Aujourd'hui, ses deux bourreaux vont <strong>payer</strong>...</p>
     <div style='text-align: center; margin: auto;'>
-        <p style="text-align: center; font-size: 10vh; font-weight: bold;">Pong : la revenche</p>
-        <button style="margin: auto; text-align: center;" onclick="start()">Commencer le jeu</button>
+        <p style="text-align: center; font-size: 10vh; font-weight: bold;">Pong : la revanche</p>
+        <button style="margin: auto; text-align: center;" onclick="debut()">Commencer le jeu</button>
     </div>
 </div>
 
